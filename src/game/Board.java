@@ -112,7 +112,7 @@ public class Board {
 				return;
 			}
 		}
-		if (x == board[x].length - 1 && y == 0) {
+		else if (x == board[x].length - 1 && y == 0) {
 			// Check top right tile
 			if (board[x - 1][y] == 0) {
 				// Tile movement
@@ -143,7 +143,7 @@ public class Board {
 				return;
 			}
 		}
-		if (x == 0 && y == board.length - 1) {
+		else if (x == 0 && y == board.length - 1) {
 			// Check bottom left tile
 			if (board[x + 1][y] == 0) {
 				// Tile movement
@@ -174,7 +174,7 @@ public class Board {
 				return;
 			}
 		}
-		if (x == board.length - 1 && y == board[x].length - 1) {
+		else if (x == board.length - 1 && y == board[x].length - 1) {
 			// Check bottom right tile
 			if (board[x - 1][y] == 0) {
 				// Tile movement
@@ -207,7 +207,7 @@ public class Board {
 		}
 		
 		// If the tile is a regular edge tile...
-		if (x == 0) {
+		else if (x == 0) {
 			// Check left edge
 			if (board[x + 1][y] == 0) {
 				// Tile movement
@@ -258,7 +258,7 @@ public class Board {
 				return;
 			}
 		}
-		if (x == board.length - 1) {
+		else if (x == board.length - 1) {
 			// Check right edge
 			if (board[x - 1][y] == 0) {
 				// Tile movement
@@ -309,7 +309,7 @@ public class Board {
 				return;
 			}
 		}
-		if (y == 0) {
+		else if (y == 0) {
 			// Check top edge
 			if (board[x - 1][y] == 0) {
 				// Tile movement
@@ -360,7 +360,7 @@ public class Board {
 				return;
 			}
 		}
-		if (y == board[x].length - 1) {
+		else if (y == board[x].length - 1) {
 			// Check bottom edge
 			if (board[x - 1][y] == 0) {
 				// Tile movement
@@ -413,7 +413,7 @@ public class Board {
 		}
 		
 		// Otherwise, it is a regular tile.
-		if (board[x - 1][y] == 0) {
+		else if (board[x - 1][y] == 0) {
 			// Tile movement
 			board[x - 1][y] = board[x][y];
 			board[x][y] = 0;
@@ -431,7 +431,7 @@ public class Board {
 			goodTiles.add(pair4);
 			return;
 		}
-		if (board[x + 1][y] == 0) {
+		else if (board[x + 1][y] == 0) {
 			// Tile movement
 			board[x + 1][y] = board[x][y];
 			board[x][y] = 0;
@@ -449,7 +449,7 @@ public class Board {
 			goodTiles.add(pair4);
 			return;
 		}
-		if (board[x][y - 1] == 0) {
+		else if (board[x][y - 1] == 0) {
 			// Tile movement
 			board[x][y - 1] = board[x][y];
 			board[x][y] = 0;
@@ -467,7 +467,7 @@ public class Board {
 			goodTiles.add(pair4);
 			return;
 		}
-		if (board[x][y + 1] == 0) {
+		else if (board[x][y + 1] == 0) {
 			// Tile movement
 			board[x][y + 1] = board[x][y];
 			board[x][y] = 0;
