@@ -2,6 +2,7 @@ package menu;
 
 import static helpers.Helper.randInt;
 import static helpers.Helper.sleep;
+import static helpers.Processing.lightenImage;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,9 @@ public class MainMenu extends Menu {
 		images = new PImage[NUMIMAGES];
 		images[0] = canvas.loadImage("../res/hot-air.png");
 		images[1] = canvas.loadImage("../res/spring-flowers.png");
-		background = new Board(canvas, images[randInt(0, NUMIMAGES)], 4);
+		PImage image = images[randInt(0, NUMIMAGES)];
+		image = lightenImage(canvas, image, 100);
+		background = new Board(canvas, image, 4);
 		goodTiles = new ArrayList<int[]>();
 	}
 	
