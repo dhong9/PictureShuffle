@@ -36,6 +36,7 @@ public class Board {
 	}
 	
 	public void draw() {
+		canvas.background(255);
 		for (int k : map.keySet()) {
 			map.get(k).draw();
 		}
