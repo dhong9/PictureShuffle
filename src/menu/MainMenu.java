@@ -1,6 +1,7 @@
 package menu;
 
 import static helpers.Helper.randInt;
+import static helpers.Helper.sleep;
 
 import java.util.ArrayList;
 
@@ -23,11 +24,16 @@ public class MainMenu extends Menu {
 		images[0] = canvas.loadImage("../res/hot-air.png");
 		images[1] = canvas.loadImage("../res/spring-flowers.png");
 		background = new Board(canvas, images[randInt(0, NUMIMAGES)], 4);
-		goodTiles = background.getGoodTiles();
+		goodTiles = new ArrayList<int[]>();
 	}
 	
 	public void draw() {
 		background.draw();
+		sleep(1000);
+		goodTiles = background.getGoodTiles();
+		int[] cell = goodTiles.get(randInt(0, goodTiles.size()));
+		background.moveTile(cell[0], cell[1]);
+		
 		super.draw();
 	}
 
