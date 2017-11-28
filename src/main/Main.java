@@ -26,4 +26,8 @@ public class Main extends PApplet {
 	public void draw() {
 		stateManager.draw();
 	}
+	
+	public void mouseClicked() {
+		stateManager.mouseClicked();
+	}
 }
