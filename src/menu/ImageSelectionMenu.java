@@ -6,9 +6,11 @@ import processing.core.PApplet;
 public class ImageSelectionMenu extends Menu {
 	
 	private ImgButton hotAirBtn, springFlowersBtn;
+	private String imageName;
 	
 	public ImageSelectionMenu(PApplet canvas) {
 		super(canvas, "Select an Image");
+		this.imageName = "";
 		
 		float padding = canvas.width / 16;
 		float x = 3 * canvas.width / 16;
@@ -24,6 +26,15 @@ public class ImageSelectionMenu extends Menu {
 		super.draw();
 		hotAirBtn.draw();
 		springFlowersBtn.draw();
+	}
+	
+	public void mouseClicked() {
+		imageName = hotAirBtn.isMouseInside() ? "hot-air" : 
+			springFlowersBtn.isMouseInside() ? "spring-flowers" : "";
+	}
+	
+	public String getImageName() {
+		return imageName;
 	}
 
 }
