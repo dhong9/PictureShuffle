@@ -13,7 +13,17 @@ public class ImgButton extends Button {
 	}
 	
 	public void draw() {
-		canvas.image(image, x, y, width, height);
+		canvas.image(image, x - width / 2, y - width / 2, width, height);
+		if (isMouseInside()) {
+			canvas.stroke(255, 255, 0);
+			canvas.strokeWeight(5);
+			canvas.noFill();
+			canvas.rect(x, y, canvas.width / 4, canvas.height / 4);
+		}
 	}
-
+	
+	public float getWidth() {
+		return width;
+	}
+	
 }

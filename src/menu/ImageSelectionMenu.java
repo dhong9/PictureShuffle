@@ -9,9 +9,13 @@ public class ImageSelectionMenu extends Menu {
 	
 	public ImageSelectionMenu(PApplet canvas) {
 		super(canvas, "Select an Image");
-		this.hotAirBtn = new ImgButton(canvas, "hot-air", canvas.width / 8, 3 * canvas.height / 8);
+		
+		float padding = canvas.width / 16;
+		float x = 3 * canvas.width / 16;
+		float y = canvas.height / 2;
+		this.hotAirBtn = new ImgButton(canvas, "hot-air", x, y);
 		this.springFlowersBtn = new ImgButton(canvas, "spring-flowers", 
-				canvas.width / 2, 3 * canvas.height / 8);
+				x + padding + hotAirBtn.getWidth(), y);
 	}
 	
 	@Override
