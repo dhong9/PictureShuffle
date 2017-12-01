@@ -26,7 +26,7 @@ public class StateManager {
 		
 		this.state = State.MainMenu; // Start the game at the main menu
 		this.mainMenu = new MainMenu(canvas, x, y, width);
-		this.imageSelectionMenu = new ImageSelectionMenu(canvas);
+		this.imageSelectionMenu = new ImageSelectionMenu(canvas, x, y, width);
 		this.game = new Game(canvas, x, y, width, "hot-air");
 	}
 	

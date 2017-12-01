@@ -1,14 +1,15 @@
 package menu.button;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
 
 public class ImgButton extends Button {
 	
 	private PImage image;
 	
-	public ImgButton(PApplet canvas, String name, float x, float y) {
-		super(canvas, name, x, y, canvas.width / 4, canvas.height / 4);
+	public ImgButton(PApplet canvas, String name, float x, float y, float width) {
+		super(canvas, name, x, y, width, width);
 		this.image = canvas.loadImage("../res/" + name + ".png");
 	}
 	
@@ -18,7 +19,8 @@ public class ImgButton extends Button {
 			canvas.stroke(255, 255, 0);
 			canvas.strokeWeight(5);
 			canvas.noFill();
-			canvas.rect(x, y, canvas.width / 4, canvas.height / 4);
+			canvas.rectMode(PConstants.CENTER);
+			canvas.rect(x, y, width, width);
 		}
 	}
 	

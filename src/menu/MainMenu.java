@@ -26,14 +26,14 @@ public class MainMenu extends Menu {
 	private int time, wait;
 	
 	public MainMenu(PApplet canvas, float x, float y, float width) {
-		super(canvas, "Picture\nShuffle");
+		super(canvas, "Picture\nShuffle", x, y, width);
 		this.destination = State.MainMenu;
 		
 		// Button setup
-		this.btnWidth = 3 * canvas.width / 8;
-		this.btnHeight = canvas.height / 8;
-		float centerX = canvas.width / 2, centerY = canvas.height / 2;
-		float padding = canvas.height / 16;
+		this.btnWidth = 3 * width / 8;
+		this.btnHeight = width / 8;
+		float centerX = x + width / 2, centerY = y + width / 2;
+		float padding = width / 16;
 		this.playBtn = new Button(canvas, "Play", centerX, centerY, btnWidth, btnHeight);
 		this.settingsBtn = new Button(canvas, "Settings", centerX, 
 				centerY + btnHeight + padding, btnWidth, btnHeight);
@@ -53,13 +53,13 @@ public class MainMenu extends Menu {
 		this.wait = 1000;
 	}
 	
-	@Override
 	public void draw() {
-		canvas.background(0);
+		super.drawBackground();
 		background.draw();
 		playBtn.draw();
 		settingsBtn.draw();
 		quitBtn.draw();
+		super.drawText();
 		
 		if (canvas.millis() - time >= wait) {
 			goodTiles = background.getGoodTiles();
@@ -67,8 +67,6 @@ public class MainMenu extends Menu {
 			background.moveTile(cell[0], cell[1]);
 			time = canvas.millis();
 		}
-		
-		super.draw();
 	}
 	
 	public State getDestination() {

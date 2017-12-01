@@ -7,23 +7,26 @@ public class ImageSelectionMenu extends Menu {
 	
 	private ImgButton hotAirBtn, springFlowersBtn;
 	private String imageName;
+	float x, y, width;
 	
-	public ImageSelectionMenu(PApplet canvas) {
-		super(canvas, "Select an Image");
+	public ImageSelectionMenu(PApplet canvas, float x, float y, float width) {
+		super(canvas, "Select an Image", x, y, width);
 		this.imageName = "";
+		this.x = x;
+		this.y = y;
+		this.width = width;
 		
-		float padding = canvas.width / 16;
-		float x = 3 * canvas.width / 16;
-		float y = canvas.height / 2;
-		this.hotAirBtn = new ImgButton(canvas, "hot-air", x, y);
+		float padding = width / 16;
+		float btnX = x + 3 * width / 16;
+		float btnY = width / 2;
+		this.hotAirBtn = new ImgButton(canvas, "hot-air", btnX, btnY, width / 4);
 		this.springFlowersBtn = new ImgButton(canvas, "spring-flowers", 
-				x + padding + hotAirBtn.getWidth(), y);
+				btnX + padding + hotAirBtn.getWidth(), btnY, width / 4);
 	}
 	
-	@Override
 	public void draw() {
-		canvas.background(255);
-		super.draw();
+		super.drawBackground();
+		super.drawText();
 		hotAirBtn.draw();
 		springFlowersBtn.draw();
 	}
