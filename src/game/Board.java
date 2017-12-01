@@ -502,7 +502,7 @@ public class Board {
 	}
 	
 	public void mouseClicked() {
-		int w = canvas.width / subdivisions;
+		int w = (int) (width / subdivisions);
 		moveTile((int)Math.floor(canvas.mouseX / w), (int)Math.floor(canvas.mouseY / w));
 	}
 	
