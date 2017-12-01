@@ -503,7 +503,12 @@ public class Board {
 	
 	public void mouseClicked() {
 		int w = (int) (width / subdivisions);
-		moveTile((int)Math.floor(canvas.mouseX / w), (int)Math.floor(canvas.mouseY / w));
+		if (canvas.mouseX > x &&
+			canvas.mouseX < x + width &&
+			canvas.mouseY > y &&
+			canvas.mouseY < y + width) {
+			moveTile((int)Math.floor((canvas.mouseX - x) / w), (int)Math.floor((canvas.mouseY - y) / w));
+		}
 	}
 	
 	@Override
