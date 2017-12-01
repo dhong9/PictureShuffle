@@ -13,13 +13,12 @@ public class Game {
 	private PImage image;
 	private Board board;
 	
-	public Game(PApplet canvas, String imageName) {
+	public Game(PApplet canvas, float x, float y, float width, String imageName) {
 		this.canvas = canvas;
-		
 		int subdivisions = 4;
 		int scrambles = 100;
 		this.image = canvas.loadImage("../res/" + imageName + ".png");
-		this.board = new Board(canvas, image, subdivisions);
+		this.board = new Board(canvas, x, y, width, image, subdivisions);
 		
 		ArrayList<int[]> goodTiles = new ArrayList<int[]>();
 		for (int i = 1; i <= scrambles; i++) {

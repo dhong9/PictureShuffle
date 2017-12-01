@@ -19,26 +19,26 @@ public class MainMenu extends Menu {
 	private ArrayList<int[]> goodTiles;
 	
 	private Button playBtn, settingsBtn, quitBtn;
-	private float width, height;
+	private float btnWidth, btnHeight;
 	
 	private State destination;
 	
 	private int time, wait;
 	
-	public MainMenu(PApplet canvas) {
+	public MainMenu(PApplet canvas, float x, float y, float width) {
 		super(canvas, "Picture\nShuffle");
 		this.destination = State.MainMenu;
 		
 		// Button setup
-		this.width = 3 * canvas.width / 8;
-		this.height = canvas.height / 8;
+		this.btnWidth = 3 * canvas.width / 8;
+		this.btnHeight = canvas.height / 8;
 		float centerX = canvas.width / 2, centerY = canvas.height / 2;
 		float padding = canvas.height / 16;
-		this.playBtn = new Button(canvas, "Play", centerX, centerY, width, height);
+		this.playBtn = new Button(canvas, "Play", centerX, centerY, btnWidth, btnHeight);
 		this.settingsBtn = new Button(canvas, "Settings", centerX, 
-				centerY + height + padding, width, height);
+				centerY + btnHeight + padding, btnWidth, btnHeight);
 		this.quitBtn = new Button(canvas, "Quit", centerX, 
-				centerY + 2 * (height + padding), width, height);
+				centerY + 2 * (btnHeight + padding), btnWidth, btnHeight);
 		
 		// Populate list of images with available images
 		images = new PImage[NUMIMAGES];
@@ -46,7 +46,7 @@ public class MainMenu extends Menu {
 		images[1] = canvas.loadImage("../res/spring-flowers.png");
 		PImage image = images[randInt(0, NUMIMAGES)];
 		image = lightenImage(canvas, image, 100);
-		background = new Board(canvas, image, 4);
+		background = new Board(canvas, x, y, width, image, 4);
 		goodTiles = new ArrayList<int[]>();
 		
 		this.time = canvas.millis();
@@ -55,6 +55,7 @@ public class MainMenu extends Menu {
 	
 	@Override
 	public void draw() {
+		canvas.background(0);
 		background.draw();
 		playBtn.draw();
 		settingsBtn.draw();
@@ -80,7 +81,7 @@ public class MainMenu extends Menu {
 		} else if (settingsBtn.isMouseInside()) {
 			
 		} else if (quitBtn.isMouseInside()) {
-			
+			System.exit(0);
 		}
 	}
 

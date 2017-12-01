@@ -7,9 +7,9 @@ public class Tile {
 	
 	private PApplet canvas;
 	private PImage image;
-	private int x, y, width, height;
+	private float x, y, width, height;
 	
-	public Tile(PApplet canvas, PImage image, int x, int y, int width, int height) {
+	public Tile(PApplet canvas, PImage image, float x, float y, float width, float height) {
 		this.canvas = canvas;
 		this.image = image;
 		this.x = x;

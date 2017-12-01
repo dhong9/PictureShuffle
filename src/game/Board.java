@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
 
 public class Board {
 	
 	private PApplet canvas;
+	private float x, y, width;
 	private PImage[][] subimages; // Tiles that will show up on the board
 	private int subdivisions;
 	private HashMap<Integer, Tile> map = new HashMap<Integer, Tile>();
@@ -16,8 +18,12 @@ public class Board {
 	
 	private int[][] solution, board;
 	
-	public Board(PApplet canvas, PImage image, int subdivisions) {
+	public Board(PApplet canvas, float x, float y, float width, 
+			PImage image, int subdivisions) {
 		this.canvas = canvas;
+		this.x = x;
+		this.y = y;
+		this.width = width;
 		this.subdivisions = subdivisions;
 		this.subimages = new PImage[subdivisions][subdivisions];
 		subdivide(image);
@@ -36,7 +42,10 @@ public class Board {
 	}
 	
 	public void draw() {
-		canvas.background(255);
+		canvas.fill(255);
+		canvas.noStroke();
+		canvas.rectMode(PConstants.CORNER);
+		canvas.rect(x, y, width, width);
 		for (int k : map.keySet()) {
 			map.get(k).draw();
 		}
@@ -69,12 +78,12 @@ public class Board {
 	}
 	
 	private void initMap() {
-		int w = canvas.width / subdivisions, h = canvas.height / subdivisions;
+		float w = width / subdivisions;
 		for (int i = 0; i < subimages.length; i++) {
 			for (int j = 0; j < subimages[i].length; j++) {
 				if (board[i][j] != 0) {
 					map.put(board[i][j], new Tile(canvas, subimages[i][j],
-							i * w, j * h, w, h));
+							x + i * w, y + j * w, w, w));
 				}
 			}
 		}

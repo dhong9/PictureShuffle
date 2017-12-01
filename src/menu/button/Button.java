@@ -16,13 +16,13 @@ public class Button {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		
-		canvas.rectMode(PConstants.CENTER);
-		canvas.textAlign(PConstants.CENTER, PConstants.CENTER);
 	}
 	
 	public void draw() {
+		canvas.rectMode(PConstants.CENTER);
+		canvas.textAlign(PConstants.CENTER, PConstants.CENTER);
 		canvas.strokeWeight(1);
+		canvas.stroke(0);
 		
 		canvas.fill(isMouseInside() ? canvas.color(0, 255, 0) : 255);
 		canvas.rect(x, y, width, height, 10);

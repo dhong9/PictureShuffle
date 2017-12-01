@@ -13,12 +13,25 @@ public class StateManager {
 	private ImageSelectionMenu imageSelectionMenu;
 	private Game game;
 	
+	private float x, y, width;
+	
 	public StateManager(PApplet canvas) {
 		this.canvas = canvas;
+		boolean horizontal = canvas.height < canvas.width;
+		this.width = horizontal ? canvas.height : canvas.width;
+		float offset = horizontal ? findOffset(canvas.width, width) :
+			findOffset(canvas.height, width);
+		this.x = horizontal ? offset : 0;
+		this.y = horizontal ? 0 : offset;
+		
 		this.state = State.MainMenu; // Start the game at the main menu
-		this.mainMenu = new MainMenu(canvas);
+		this.mainMenu = new MainMenu(canvas, x, y, width);
 		this.imageSelectionMenu = new ImageSelectionMenu(canvas);
-		this.game = new Game(canvas, "hot-air");
+		this.game = new Game(canvas, x, y, width, "hot-air");
+	}
+	
+	private float findOffset(float sideLength, float actualSize) {
+		return 0.5f * (sideLength - actualSize);
 	}
 	
 	public void draw() {
@@ -46,7 +59,7 @@ public class StateManager {
 			break;
 		case ImageSelectionMenu:
 			imageSelectionMenu.mouseClicked();
-			game = new Game(canvas, imageSelectionMenu.getImageName());
+			game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
 			state = State.Game;
 			break;
 		case Game:

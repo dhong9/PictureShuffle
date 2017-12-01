@@ -16,11 +16,7 @@ public class Main extends PApplet {
 	}
 	
 	public void settings() {
-		if (displayWidth < displayHeight) {
-			size(3 * displayWidth / 4, 3 * displayWidth / 4);
-		} else {
-			size(3 * displayHeight / 4, 3 * displayHeight / 4);
-		}
+		fullScreen();
 	}
 	
 	public void draw() {
