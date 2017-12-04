@@ -42,8 +42,8 @@ public class MainMenu extends Menu {
 		
 		// Populate list of images with available images
 		images = new PImage[NUMIMAGES];
-		images[0] = canvas.loadImage("../res/hot-air.png");
-		images[1] = canvas.loadImage("../res/spring-flowers.png");
+		images[0] = canvas.loadImage("../res/images/hot-air.png");
+		images[1] = canvas.loadImage("../res/images/spring-flowers.png");
 		PImage image = images[randInt(0, NUMIMAGES)];
 		image = lightenImage(canvas, image, 100);
 		background = new Board(canvas, x, y, width, image, 4);

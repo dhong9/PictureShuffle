@@ -23,7 +23,7 @@ public class Game {
 		
 		int subdivisions = 4;
 		int scrambles = 100;
-		this.image = canvas.loadImage("../res/" + imageName + ".png");
+		this.image = canvas.loadImage("../res/images/" + imageName + ".png");
 		this.board = new Board(canvas, x, y, width, image, subdivisions);
 		
 		ArrayList<int[]> goodTiles = new ArrayList<int[]>();

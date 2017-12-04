@@ -10,7 +10,7 @@ public class ImgButton extends Button {
 	
 	public ImgButton(PApplet canvas, String name, float x, float y, float width) {
 		super(canvas, name, x, y, width, width);
-		this.image = canvas.loadImage("../res/" + name + ".png");
+		this.image = canvas.loadImage("../res/images/" + name + ".png");
 	}
 	
 	public void draw() {
