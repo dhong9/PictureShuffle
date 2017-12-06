@@ -77,7 +77,7 @@ public class MainMenu extends Menu {
 		if (playBtn.isMouseInside()) {
 			destination = State.ImageSelectionMenu;
 		} else if (settingsBtn.isMouseInside()) {
-			
+			destination = State.SettingsMenu;
 		} else if (quitBtn.isMouseInside()) {
 			System.exit(0);
 		}

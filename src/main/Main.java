@@ -35,7 +35,8 @@ public class Main extends PApplet {
 	}
 	
 	public void settings() {
-		fullScreen();
+		//fullScreen();
+		size(displayWidth / 2, displayHeight / 2);
 	}
 	
 	public void draw() {
@@ -49,7 +50,6 @@ public class Main extends PApplet {
 		}
 		
 		if (!first && !currentSong.isPlaying()) {
-			System.out.println("updated");
 			pauseTime = false;
 			first = true;
 			time = millis();

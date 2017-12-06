@@ -3,6 +3,7 @@ package controller;
 import game.Game;
 import menu.ImageSelectionMenu;
 import menu.MainMenu;
+import menu.SettingsMenu;
 import processing.core.PApplet;
 
 public class StateManager {
@@ -12,6 +13,7 @@ public class StateManager {
 	private MainMenu mainMenu;
 	private ImageSelectionMenu imageSelectionMenu;
 	private Game game;
+	private SettingsMenu settingsMenu;
 	
 	private float x, y, width;
 	
@@ -28,6 +30,7 @@ public class StateManager {
 		this.mainMenu = new MainMenu(canvas, x, y, width);
 		this.imageSelectionMenu = new ImageSelectionMenu(canvas, x, y, width);
 		this.game = new Game(canvas, x, y, width, "hot-air");
+		this.settingsMenu = new SettingsMenu(canvas, x, y, width);
 	}
 	
 	private float findOffset(float sideLength, float actualSize) {
@@ -44,6 +47,9 @@ public class StateManager {
 			break;
 		case Game:
 			game.draw();
+			break;
+		case SettingsMenu:
+			settingsMenu.draw();
 			break;
 		default:
 			mainMenu.draw();
