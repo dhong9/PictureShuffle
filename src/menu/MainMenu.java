@@ -19,7 +19,6 @@ public class MainMenu extends Menu {
 	private ArrayList<int[]> goodTiles;
 	
 	private Button playBtn, settingsBtn, quitBtn;
-	private float btnWidth, btnHeight;
 	
 	private State destination;
 	
@@ -30,8 +29,8 @@ public class MainMenu extends Menu {
 		this.destination = State.MainMenu;
 		
 		// Button setup
-		this.btnWidth = 3 * width / 8;
-		this.btnHeight = width / 8;
+		float btnWidth = 3 * width / 8;
+		float btnHeight = width / 8;
 		float centerX = x + width / 2, centerY = y + width / 2;
 		float padding = width / 16;
 		this.playBtn = new Button(canvas, "Play", centerX, centerY, btnWidth, btnHeight);

@@ -65,8 +65,11 @@ public class StateManager {
 			break;
 		case ImageSelectionMenu:
 			imageSelectionMenu.mouseClicked();
-			game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
-			state = State.Game;
+			String imageName = imageSelectionMenu.getImageName();
+			if (!imageName.isEmpty()) {
+				game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
+				state = State.Game;
+			}
 			break;
 		case Game:
 			game.mouseClicked();
