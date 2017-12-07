@@ -71,6 +71,7 @@ public class StateManager {
 			break;
 		case ImageSelectionMenu:
 			imageSelectionMenu.mouseClicked();
+			game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
 			state = imageSelectionMenu.getDestination();
 			break;
 		case Game:

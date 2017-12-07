@@ -55,6 +55,10 @@ public class ImageSelectionMenu extends Menu {
 		}
 	}
 	
+	public String getImageName() {
+		return imageName;
+	}
+	
 	public State getDestination() {
 		return destination;
 	}

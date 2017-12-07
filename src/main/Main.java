@@ -13,8 +13,6 @@ public class Main extends PApplet {
 	
 	private StateManager stateManager;
 	
-	private int time, wait;
-	private boolean pauseTime, first;
 	private Minim minim;
 	private ArrayList<AudioPlayer> songs;
 	private AudioPlayer currentSong;
@@ -25,35 +23,20 @@ public class Main extends PApplet {
 	
 	public void setup() {
 		stateManager = new StateManager(this);
-		this.time = millis();
-		this.wait = 30000;
-		this.pauseTime = false;
-		this.first = true;
 		this.minim = new Minim(this);
 		this.songs = new ArrayList<AudioPlayer>();
 		songs.add(minim.loadFile("../res/songs/Memories.mp3"));
+		currentSong = getRandomSong();
+		currentSong.loop();
 	}
 	
 	public void settings() {
 		fullScreen();
-		//size(displayWidth / 2, displayHeight / 2);
+		size(displayWidth / 2, displayHeight / 2);
 	}
 	
 	public void draw() {
 		stateManager.draw();
-		
-		if (!pauseTime && millis() - time >= wait) {
-			pauseTime = true;
-			currentSong = getRandomSong();
-			currentSong.play();
-			first = false;
-		}
-		
-		if (!first && !currentSong.isPlaying()) {
-			pauseTime = false;
-			first = true;
-			time = millis();
-		}
 	}
 	
 	public void mouseClicked() {
