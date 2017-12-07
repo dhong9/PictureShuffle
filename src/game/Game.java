@@ -25,8 +25,8 @@ public class Game {
 		this.y = y;
 		this.width = width;
 		
-		int subdivisions = 100;
-		int scrambles = 4;
+		int subdivisions = 4;
+		int scrambles = 100;
 		this.image = canvas.loadImage("../res/images/" + imageName + ".png");
 		this.board = new Board(canvas, x, y, width, image, subdivisions);
 		
