@@ -35,8 +35,8 @@ public class Main extends PApplet {
 	}
 	
 	public void settings() {
-		//fullScreen();
-		size(displayWidth / 2, displayHeight / 2);
+		fullScreen();
+		//size(displayWidth / 2, displayHeight / 2);
 	}
 	
 	public void draw() {
@@ -58,6 +58,10 @@ public class Main extends PApplet {
 	
 	public void mouseClicked() {
 		stateManager.mouseClicked();
+	}
+	
+	public void keyPressed() {
+		stateManager.keyPressed();
 	}
 	
 	private AudioPlayer getRandomSong() {

@@ -3,20 +3,24 @@ package controller;
 import game.Game;
 import menu.ImageSelectionMenu;
 import menu.MainMenu;
+import menu.PauseMenu;
 import menu.SettingsMenu;
 import processing.core.PApplet;
 
 public class StateManager {
 	
+	private PApplet canvas;
 	private State state; // Current state of the game
 	private MainMenu mainMenu;
 	private ImageSelectionMenu imageSelectionMenu;
 	private Game game;
+	private PauseMenu pauseMenu;
 	private SettingsMenu settingsMenu;
 	
 	private float x, y, width;
 	
 	public StateManager(PApplet canvas) {
+		this.canvas = canvas;
 		boolean horizontal = canvas.height < canvas.width;
 		this.width = horizontal ? canvas.height : canvas.width;
 		float offset = horizontal ? findOffset(canvas.width, width) :
@@ -28,6 +32,7 @@ public class StateManager {
 		this.mainMenu = new MainMenu(canvas, x, y, width);
 		this.imageSelectionMenu = new ImageSelectionMenu(canvas, x, y, width);
 		this.game = new Game(canvas, x, y, width, "hot-air");
+		this.pauseMenu = new PauseMenu(canvas, x, y, width);
 		this.settingsMenu = new SettingsMenu(canvas, x, y, width);
 	}
 	
@@ -45,6 +50,9 @@ public class StateManager {
 			break;
 		case Game:
 			game.draw();
+			break;
+		case PauseMenu:
+			pauseMenu.draw();
 			break;
 		case SettingsMenu:
 			settingsMenu.draw();
@@ -68,8 +76,27 @@ public class StateManager {
 		case Game:
 			game.mouseClicked();
 			break;
+		case PauseMenu:
+			pauseMenu.mouseClicked();
+			state = pauseMenu.getDestination();
+			break;
 		default:
 			break;
+		}
+	}
+	
+	public void keyPressed() {
+		if (canvas.key == 'p') {
+			switch (state) {
+			case Game:
+				state = State.PauseMenu;
+				break;
+			case PauseMenu:
+				state = State.Game;
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
