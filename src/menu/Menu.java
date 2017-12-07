@@ -7,7 +7,7 @@ public class Menu {
 	
 	protected PApplet canvas;
 	private String name;
-	private float x, y, width;
+	protected float x, y, width;
 	
 	public Menu(PApplet canvas, String name, float x, float y, float width) {
 		this.canvas = canvas;

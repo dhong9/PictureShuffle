@@ -32,7 +32,7 @@ public class Main extends PApplet {
 	
 	public void settings() {
 		fullScreen();
-		size(displayWidth / 2, displayHeight / 2);
+		//size(displayWidth / 2, displayHeight / 2);
 	}
 	
 	public void draw() {

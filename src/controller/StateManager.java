@@ -5,6 +5,7 @@ import menu.ImageSelectionMenu;
 import menu.MainMenu;
 import menu.PauseMenu;
 import menu.SettingsMenu;
+import menu.WinMenu;
 import processing.core.PApplet;
 
 public class StateManager {
@@ -15,6 +16,7 @@ public class StateManager {
 	private ImageSelectionMenu imageSelectionMenu;
 	private Game game;
 	private PauseMenu pauseMenu;
+	private WinMenu winMenu;
 	private SettingsMenu settingsMenu;
 	
 	private float x, y, width;
@@ -33,6 +35,7 @@ public class StateManager {
 		this.imageSelectionMenu = new ImageSelectionMenu(canvas, x, y, width);
 		this.game = new Game(canvas, x, y, width, "hot-air");
 		this.pauseMenu = new PauseMenu(canvas, x, y, width);
+		this.winMenu = new WinMenu(canvas,x, y, width, "hot-air");
 		this.settingsMenu = new SettingsMenu(canvas, x, y, width);
 	}
 	
@@ -53,6 +56,9 @@ public class StateManager {
 			break;
 		case PauseMenu:
 			pauseMenu.draw();
+			break;
+		case WinMenu:
+			winMenu.draw();
 			break;
 		case SettingsMenu:
 			settingsMenu.draw();
@@ -76,6 +82,12 @@ public class StateManager {
 			break;
 		case Game:
 			game.mouseClicked();
+			state = game.getDestination();
+			winMenu = new WinMenu(canvas, x, y, width, imageSelectionMenu.getImageName());
+			break;
+		case WinMenu:
+			winMenu.mouseClicked();
+			state = winMenu.getDestination();
 			break;
 		case PauseMenu:
 			pauseMenu.mouseClicked();
@@ -90,10 +102,12 @@ public class StateManager {
 		if (canvas.key == 'p') {
 			switch (state) {
 			case Game:
-				state = State.PauseMenu;
+				pauseMenu.keyPressed();
+				state = pauseMenu.getDestination();
 				break;
 			case PauseMenu:
-				state = State.Game;
+				game.keyPressed();
+				state = game.getDestination();
 				break;
 			default:
 				break;

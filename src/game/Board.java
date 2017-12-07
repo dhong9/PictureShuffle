@@ -523,4 +523,12 @@ public class Board {
 		return str;
 	}
 	
+	public int[][] getBoard() {
+		return board;
+	}
+	
+	public int[][] getSolution() {
+		return solution;
+	}
+	
 }

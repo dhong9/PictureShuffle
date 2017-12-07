@@ -2,6 +2,6 @@ package controller;
 
 public enum State {
 	
-	MainMenu, ImageSelectionMenu, Game, PauseMenu, SettingsMenu
+	MainMenu, ImageSelectionMenu, Game, PauseMenu, WinMenu, SettingsMenu
 
 }
