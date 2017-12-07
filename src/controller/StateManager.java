@@ -8,7 +8,6 @@ import processing.core.PApplet;
 
 public class StateManager {
 	
-	private PApplet canvas;
 	private State state; // Current state of the game
 	private MainMenu mainMenu;
 	private ImageSelectionMenu imageSelectionMenu;
@@ -18,7 +17,6 @@ public class StateManager {
 	private float x, y, width;
 	
 	public StateManager(PApplet canvas) {
-		this.canvas = canvas;
 		boolean horizontal = canvas.height < canvas.width;
 		this.width = horizontal ? canvas.height : canvas.width;
 		float offset = horizontal ? findOffset(canvas.width, width) :
@@ -65,11 +63,7 @@ public class StateManager {
 			break;
 		case ImageSelectionMenu:
 			imageSelectionMenu.mouseClicked();
-			String imageName = imageSelectionMenu.getImageName();
-			if (!imageName.isEmpty()) {
-				game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
-				state = State.Game;
-			}
+			state = imageSelectionMenu.getDestination();
 			break;
 		case Game:
 			game.mouseClicked();

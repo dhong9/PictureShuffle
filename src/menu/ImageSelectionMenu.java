@@ -1,5 +1,6 @@
 package menu;
 
+import controller.State;
 import menu.button.Button;
 import menu.button.ImgButton;
 import processing.core.PApplet;
@@ -11,8 +12,12 @@ public class ImageSelectionMenu extends Menu {
 	private String imageName;
 	float x, y, width;
 	
+	private State destination;
+	
 	public ImageSelectionMenu(PApplet canvas, float x, float y, float width) {
 		super(canvas, "Select an Image", x, y, width);
+		this.destination = State.ImageSelectionMenu;
+		
 		this.imageName = "";
 		this.x = x;
 		this.y = y;
@@ -43,10 +48,15 @@ public class ImageSelectionMenu extends Menu {
 	public void mouseClicked() {
 		imageName = hotAirBtn.isMouseInside() ? "hot-air" : 
 			springFlowersBtn.isMouseInside() ? "spring-flowers" : "";
+		if (!imageName.isEmpty()) {
+			destination = State.Game;
+		} else if (backBtn.isMouseInside()) {
+			destination = State.MainMenu;
+		}
 	}
 	
-	public String getImageName() {
-		return imageName;
+	public State getDestination() {
+		return destination;
 	}
 
 }
