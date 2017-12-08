@@ -101,10 +101,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x + 1, y};
-				int[] pair2 = {x, y + 1};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x, y + 1};
+				goodTiles.add(pair);
 				return;
 			}
 			if (board[x][y + 1] == 0) {
@@ -115,10 +113,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x + 1, y};
-				int[] pair2 = {x, y + 1};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x + 1, y};
+				goodTiles.add(pair);
 				return;
 			}
 		}
@@ -132,10 +128,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y + 1};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x, y + 1};
+				goodTiles.add(pair);
 				return;
 			}
 			if (board[x][y + 1] == 0) {
@@ -146,10 +140,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y + 1};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x - 1, y};
+				goodTiles.add(pair);
 				return;
 			}
 		}
@@ -163,10 +155,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x, y - 1};
-				int[] pair2 = {x + 1, y};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x, y - 1};
+				goodTiles.add(pair);
 				return;
 			}
 			if (board[x][y - 1] == 0) {
@@ -177,10 +167,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x, y - 1};
-				int[] pair2 = {x + 1, y};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x + 1, y};
+				goodTiles.add(pair);
 				return;
 			}
 		}
@@ -194,10 +182,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y - 1};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x, y - 1};
+				goodTiles.add(pair);
 				return;
 			}
 			if (board[x][y - 1] == 0) {
@@ -208,10 +194,8 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y - 1};
-				goodTiles.add(pair1);
-				goodTiles.add(pair2);
+				int[] pair = {x - 1, y};
+				goodTiles.add(pair);
 				return;
 			}
 		}
@@ -228,11 +212,9 @@ public class Board {
 				// Update list of movable tiles
 				goodTiles.clear();
 				int[] pair1 = {x, y - 1};
-				int[] pair2 = {x + 1, y};
-				int[] pair3 = {x, y + 1};
+				int[] pair2 = {x, y + 1};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x][y - 1] == 0) {
@@ -243,12 +225,10 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x, y - 1};
-				int[] pair2 = {x + 1, y};
-				int[] pair3 = {x, y + 1};
+				int[] pair1 = {x + 1, y};
+				int[] pair2 = {x, y + 1};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x][y + 1] == 0) {
@@ -259,12 +239,10 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x, y - 1};
-				int[] pair2 = {x + 1, y};
-				int[] pair3 = {x, y + 1};
+				int[] pair1 = {x + 1, y};
+				int[] pair2 = {x, y + 1};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 		}
@@ -279,11 +257,9 @@ public class Board {
 				// Update list of movable tiles
 				goodTiles.clear();
 				int[] pair1 = {x, y + 1};
-				int[] pair2 = {x - 1, y};
-				int[] pair3 = {x, y - 1};
+				int[] pair2 = {x, y - 1};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x][y - 1] == 0) {
@@ -296,10 +272,8 @@ public class Board {
 				goodTiles.clear();
 				int[] pair1 = {x, y + 1};
 				int[] pair2 = {x - 1, y};
-				int[] pair3 = {x, y - 1};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x][y + 1] == 0) {
@@ -310,12 +284,10 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x, y + 1};
-				int[] pair2 = {x - 1, y};
-				int[] pair3 = {x, y - 1};
+				int[] pair1 = {x - 1, y};
+				int[] pair2 = {x, y - 1};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 		}
@@ -329,12 +301,10 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y + 1};
-				int[] pair3 = {x + 1, y};
+				int[] pair1 = {x, y + 1};
+				int[] pair2 = {x + 1, y};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x + 1][y] == 0) {
@@ -347,10 +317,8 @@ public class Board {
 				goodTiles.clear();
 				int[] pair1 = {x - 1, y};
 				int[] pair2 = {x, y + 1};
-				int[] pair3 = {x + 1, y};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x][y + 1] == 0) {
@@ -362,11 +330,9 @@ public class Board {
 				// Update list of movable tiles
 				goodTiles.clear();
 				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y + 1};
-				int[] pair3 = {x + 1, y};
+				int[] pair2 = {x + 1, y};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 		}
@@ -380,12 +346,10 @@ public class Board {
 				
 				// Update list of movable tiles
 				goodTiles.clear();
-				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y - 1};
-				int[] pair3 = {x + 1, y};
+				int[] pair1 = {x, y - 1};
+				int[] pair2 = {x + 1, y};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x + 1][y] == 0) {
@@ -398,10 +362,8 @@ public class Board {
 				goodTiles.clear();
 				int[] pair1 = {x - 1, y};
 				int[] pair2 = {x, y - 1};
-				int[] pair3 = {x + 1, y};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 			if (board[x][y - 1] == 0) {
@@ -413,11 +375,9 @@ public class Board {
 				// Update list of movable tiles
 				goodTiles.clear();
 				int[] pair1 = {x - 1, y};
-				int[] pair2 = {x, y - 1};
-				int[] pair3 = {x + 1, y};
+				int[] pair2 = {x + 1, y};
 				goodTiles.add(pair1);
 				goodTiles.add(pair2);
-				goodTiles.add(pair3);
 				return;
 			}
 		}
@@ -431,14 +391,12 @@ public class Board {
 			
 			// Update list of movable tiles
 			goodTiles.clear();
-			int[] pair1 = {x - 1, y};
-			int[] pair2 = {x, y - 1};
-			int[] pair3 = {x + 1, y};
-			int[] pair4 = {x, y + 1};
+			int[] pair1 = {x, y - 1};
+			int[] pair2 = {x + 1, y};
+			int[] pair3 = {x, y + 1};
 			goodTiles.add(pair1);
 			goodTiles.add(pair2);
 			goodTiles.add(pair3);
-			goodTiles.add(pair4);
 			return;
 		}
 		else if (board[x + 1][y] == 0) {
@@ -451,12 +409,10 @@ public class Board {
 			goodTiles.clear();
 			int[] pair1 = {x - 1, y};
 			int[] pair2 = {x, y - 1};
-			int[] pair3 = {x + 1, y};
-			int[] pair4 = {x, y + 1};
+			int[] pair3 = {x, y + 1};
 			goodTiles.add(pair1);
 			goodTiles.add(pair2);
 			goodTiles.add(pair3);
-			goodTiles.add(pair4);
 			return;
 		}
 		else if (board[x][y - 1] == 0) {
@@ -468,13 +424,11 @@ public class Board {
 			// Update list of movable tiles
 			goodTiles.clear();
 			int[] pair1 = {x - 1, y};
-			int[] pair2 = {x, y - 1};
-			int[] pair3 = {x + 1, y};
-			int[] pair4 = {x, y + 1};
+			int[] pair2 = {x + 1, y};
+			int[] pair3 = {x, y + 1};
 			goodTiles.add(pair1);
 			goodTiles.add(pair2);
 			goodTiles.add(pair3);
-			goodTiles.add(pair4);
 			return;
 		}
 		else if (board[x][y + 1] == 0) {
@@ -488,11 +442,9 @@ public class Board {
 			int[] pair1 = {x - 1, y};
 			int[] pair2 = {x, y - 1};
 			int[] pair3 = {x + 1, y};
-			int[] pair4 = {x, y + 1};
 			goodTiles.add(pair1);
 			goodTiles.add(pair2);
 			goodTiles.add(pair3);
-			goodTiles.add(pair4);
 			return;
 		}
 	}

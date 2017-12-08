@@ -102,12 +102,12 @@ public class StateManager {
 		if (canvas.key == 'p') {
 			switch (state) {
 			case Game:
-				pauseMenu.keyPressed();
-				state = pauseMenu.getDestination();
-				break;
-			case PauseMenu:
 				game.keyPressed();
 				state = game.getDestination();
+				break;
+			case PauseMenu:
+				pauseMenu.keyPressed();
+				state = pauseMenu.getDestination();
 				break;
 			default:
 				break;
