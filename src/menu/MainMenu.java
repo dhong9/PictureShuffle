@@ -13,7 +13,7 @@ import processing.core.PImage;
 
 public class MainMenu extends Menu {
 	
-	private static final int NUMIMAGES = 2;
+	private static final int NUMIMAGES = 3;
 	private PImage[] images;
 	private Board background;
 	private ArrayList<int[]> goodTiles;
@@ -41,8 +41,9 @@ public class MainMenu extends Menu {
 		
 		// Populate list of images with available images
 		images = new PImage[NUMIMAGES];
-		images[0] = canvas.loadImage("../res/images/hot-air.png");
-		images[1] = canvas.loadImage("../res/images/spring-flowers.png");
+		images[0] = canvas.loadImage("res/images/hot-air.png");
+		images[1] = canvas.loadImage("res/images/spring-flowers.png");
+		images[2] = canvas.loadImage("res/images/summit.png");
 		PImage image = images[randInt(0, NUMIMAGES)];
 		image = lightenImage(canvas, image, 100);
 		background = new Board(canvas, x, y, width, image, 4);

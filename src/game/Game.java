@@ -19,19 +19,28 @@ public class Game {
 	
 	private State destination;
 	
+	/**
+	 * Constructor to instantiate Game object
+	 * @param canvas
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param imageName
+	 */
 	public Game(PApplet canvas, float x, float y, float width, String imageName) {
 		this.canvas = canvas;
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		
-		int subdivisions = 4;
-		int scrambles = 100;
-		this.image = canvas.loadImage("../res/images/" + imageName + ".png");
+		int subdivisions = 4; // Number of rows/columns on grid
+		int scrambles = 100; // How many moves for scrambling
+		this.image = canvas.loadImage("res/images/" + imageName + ".png");
 		this.board = new Board(canvas, x, y, width, image, subdivisions);
 		
-		this.destination = State.Game;
+		this.destination = State.Game; // Default destination state to self
 		
+		// Store list of movable tiles for scrambling
 		ArrayList<int[]> goodTiles = new ArrayList<int[]>();
 		for (int i = 1; i <= scrambles; i++) {
 			goodTiles = board.getGoodTiles();
@@ -40,6 +49,9 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Draws the entire game panel
+	 */
 	public void draw() {
 		canvas.background(0); // Void region color
 		canvas.fill(255); // Actual game background
@@ -50,19 +62,31 @@ public class Game {
 		board.draw();
 	}
 	
+	/**
+	 * Mouse click event handler
+	 */
 	public void mouseClicked() {
-		board.mouseClicked();
+		board.mouseClicked(); // Update the board
+		
+		// If the board is solved, then display the win screen
 		if (Arrays.deepEquals(board.getBoard(), board.getSolution())) {
 			destination = State.WinMenu;
 		}
 	}
 	
+	/**
+	 * Key pressed event handler
+	 */
 	public void keyPressed() {
+		// Press 'P' to pause the game
 		if (canvas.key == 'p') {
 			destination = State.PauseMenu;
 		}
 	}
 	
+	/**
+	 * @return destination of the game screen
+	 */
 	public State getDestination() {
 		return destination;
 	}

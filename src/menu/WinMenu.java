@@ -26,7 +26,7 @@ public class WinMenu extends Menu {
 		this.quitBtn = new Button(canvas, "Quit", centerX, 
 				centerY + 2 * (btnHeight + padding), btnWidth, btnHeight);
 		
-		this.image = canvas.loadImage("../res/images/" + imageName + ".png");
+		this.image = canvas.loadImage("res/images/" + imageName + ".png");
 	}
 	
 	public void draw() {

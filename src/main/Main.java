@@ -25,7 +25,7 @@ public class Main extends PApplet {
 		stateManager = new StateManager(this);
 		this.minim = new Minim(this);
 		this.songs = new ArrayList<AudioPlayer>();
-		songs.add(minim.loadFile("../res/songs/Memories.mp3"));
+		songs.add(minim.loadFile("res/songs/Memories.mp3"));
 		currentSong = getRandomSong();
 		currentSong.loop();
 	}

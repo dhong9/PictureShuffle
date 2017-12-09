@@ -18,6 +18,15 @@ public class Board {
 	
 	private int[][] solution, board;
 	
+	/**
+	 * Constructor to instantiate Board object
+	 * @param canvas
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param image
+	 * @param subdivisions
+	 */
 	public Board(PApplet canvas, float x, float y, float width, 
 			PImage image, int subdivisions) {
 		this.canvas = canvas;
@@ -28,12 +37,13 @@ public class Board {
 		this.subimages = new PImage[subdivisions][subdivisions];
 		subdivide(image);
 		
-		this.solution = new int[subdivisions][subdivisions];
-		this.board = new int[subdivisions][subdivisions];
+		this.solution = new int[subdivisions][subdivisions]; // Solved board
+		this.board = new int[subdivisions][subdivisions]; // Scrambled board
 		buildSolution();
 		initBoard();
 		initMap();
 		
+		// Keep list of movable tiles (only applicable for shuffling board)
 		this.goodTiles = new ArrayList<int[]>();
 		int[] pair1 = {subdivisions - 1, subdivisions - 2};
 		int[] pair2 = {subdivisions - 2, subdivisions - 1};
@@ -41,18 +51,30 @@ public class Board {
 		goodTiles.add(pair2);
 	}
 	
+	/**
+	 * Draws the board
+	 */
 	public void draw() {
-		canvas.fill(255);
+		canvas.fill(255); // White background
 		canvas.noStroke();
 		canvas.rectMode(PConstants.CORNER);
 		canvas.rect(x, y, width, width);
+		
+		// Loop for drawing individual tiles to their appropriate location
 		for (int k : map.keySet()) {
 			map.get(k).draw();
 		}
 	}
 	
+	/**
+	 * Slice an image into a grid
+	 * @param source
+	 */
 	private void subdivide(PImage source) {
+		// Dimensions of each resulting tile
 		int w = source.width / subdivisions, h = source.height / subdivisions;
+		
+		// Populate list of subdivided image tiles
 		for (int i = 0; i < subimages.length; i++) {
 			for (int j = 0; j < subimages[i].length; j++) {
 				subimages[i][j] = source.get(i * w, j * h, w, h);
@@ -60,6 +82,14 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Define the 'solved' board as grid numbered from 1 to n-1. In this case: <br/>
+	 * {1 2 3 4 <br/>
+	 *  5 6 7 8 <br/>
+	 *  9 10 11 12 <br/>
+	 *  13 14 15 0} <br/>
+	 * The bottom right corner is 0 because no tile starts there.
+	 */
 	private void buildSolution() {
 		for (int i = 0; i < solution.length; i++) {
 			for (int j = 0; j < solution[i].length; j++) {
@@ -69,6 +99,9 @@ public class Board {
 		solution[solution.length - 1][solution[0].length - 1] = 0;
 	}
 	
+	/**
+	 * Start the board as 'solved'
+	 */
 	private void initBoard() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
@@ -77,6 +110,10 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Match each tile to their corresponding id.
+	 * For example, the top-left tile would have an id of 1.
+	 */
 	private void initMap() {
 		float w = width / subdivisions;
 		for (int i = 0; i < subimages.length; i++) {
@@ -89,6 +126,11 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Moves the selected tile to an adjacent slot if it is open
+	 * @param x
+	 * @param y
+	 */
 	public void moveTile(int x, int y) {
 		// If the tile is a corner tile...
 		if (x == 0 && y == 0) {
@@ -449,10 +491,16 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * @return list of movable tiles
+	 */
 	public ArrayList<int[]> getGoodTiles() {
 		return goodTiles;
 	}
 	
+	/**
+	 * Mouse click event handler
+	 */
 	public void mouseClicked() {
 		int w = (int) (width / subdivisions);
 		if (canvas.mouseX > x &&
@@ -475,10 +523,17 @@ public class Board {
 		return str;
 	}
 	
+	/**
+	 * @return the integer array representation of the board's current state
+	 */
 	public int[][] getBoard() {
 		return board;
 	}
 	
+	/**
+	 * @return the integer array representation of the board's unscrambled
+	 * (solved) state
+	 */
 	public int[][] getSolution() {
 		return solution;
 	}

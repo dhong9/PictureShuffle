@@ -7,7 +7,7 @@ import processing.core.PApplet;
 
 public class ImageSelectionMenu extends Menu {
 	
-	private ImgButton hotAirBtn, springFlowersBtn;
+	private ImgButton hotAirBtn, springFlowersBtn, summitBtn;
 	private Button backBtn;
 	private String imageName;
 	float x, y, width;
@@ -29,6 +29,9 @@ public class ImageSelectionMenu extends Menu {
 		this.hotAirBtn = new ImgButton(canvas, "hot-air", btnX, btnY, width / 4);
 		this.springFlowersBtn = new ImgButton(canvas, "spring-flowers", 
 				btnX + padding + hotAirBtn.getWidth(), btnY, width / 4);
+		this.summitBtn = new ImgButton(canvas, "summit",
+				btnX + 2 * padding + hotAirBtn.getWidth() + springFlowersBtn.getWidth(),
+				btnY, width / 4);
 		
 		float btnWidth = 3 * width / 8;
 		float btnHeight = width / 8;
@@ -42,12 +45,14 @@ public class ImageSelectionMenu extends Menu {
 		super.drawText();
 		hotAirBtn.draw();
 		springFlowersBtn.draw();
+		summitBtn.draw();
 		backBtn.draw();
 	}
 	
 	public void mouseClicked() {
 		imageName = hotAirBtn.isMouseInside() ? "hot-air" : 
-			springFlowersBtn.isMouseInside() ? "spring-flowers" : "";
+			springFlowersBtn.isMouseInside() ? "spring-flowers" : 
+			summitBtn.isMouseInside() ? "summit" : "";
 		if (!imageName.isEmpty()) {
 			destination = State.Game;
 		} else if (backBtn.isMouseInside()) {

@@ -8,10 +8,16 @@ import menu.SettingsMenu;
 import menu.WinMenu;
 import processing.core.PApplet;
 
+/**
+ * Decides what part of the game draws and functions
+ * @author Daniel Hong
+ */
 public class StateManager {
 	
 	private PApplet canvas;
 	private State state; // Current state of the game
+	
+	// All states of the game
 	private MainMenu mainMenu;
 	private ImageSelectionMenu imageSelectionMenu;
 	private Game game;
@@ -19,10 +25,17 @@ public class StateManager {
 	private WinMenu winMenu;
 	private SettingsMenu settingsMenu;
 	
-	private float x, y, width;
+	private float x, y, width; // Window dimensions
 	
+	/**
+	 * Main StateManager constructor
+	 * @param canvas
+	 */
 	public StateManager(PApplet canvas) {
 		this.canvas = canvas;
+		
+		// Adapt game display dimensions to monitor dimensions
+		// The display will always be square
 		boolean horizontal = canvas.height < canvas.width;
 		this.width = horizontal ? canvas.height : canvas.width;
 		float offset = horizontal ? findOffset(canvas.width, width) :
@@ -30,6 +43,7 @@ public class StateManager {
 		this.x = horizontal ? offset : 0;
 		this.y = horizontal ? 0 : offset;
 		
+		// Initialize states
 		this.state = State.MainMenu; // Start the game at the main menu
 		this.mainMenu = new MainMenu(canvas, x, y, width);
 		this.imageSelectionMenu = new ImageSelectionMenu(canvas, x, y, width);
@@ -39,10 +53,19 @@ public class StateManager {
 		this.settingsMenu = new SettingsMenu(canvas, x, y, width);
 	}
 	
+	/**
+	 * Calculate how much to shift the game display horizontally/vertically
+	 * @param sideLength the longer side length
+	 * @param actualSize the width of the main game display
+	 * @return number of pixels to shift the game display
+	 */
 	private float findOffset(float sideLength, float actualSize) {
 		return 0.5f * (sideLength - actualSize);
 	}
 	
+	/**
+	 * Draw the current part of the game
+	 */
 	public void draw() {
 		switch (state) {
 		case MainMenu:
@@ -64,11 +87,15 @@ public class StateManager {
 			settingsMenu.draw();
 			break;
 		default:
+			// If something fails, then we will always be at the main menu
 			mainMenu.draw();
 			break;
 		}
 	}
 	
+	/**
+	 * Mouse click event handler
+	 */
 	public void mouseClicked() {
 		switch (state) {
 		case MainMenu:
@@ -77,8 +104,11 @@ public class StateManager {
 			break;
 		case ImageSelectionMenu:
 			imageSelectionMenu.mouseClicked();
-			game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
-			state = imageSelectionMenu.getDestination();
+			String imageName = imageSelectionMenu.getImageName();
+			if (!imageName.isEmpty()) {
+				game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
+				state = imageSelectionMenu.getDestination();
+			}
 			break;
 		case Game:
 			game.mouseClicked();
