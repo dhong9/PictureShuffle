@@ -42,6 +42,10 @@ public class Main extends PApplet {
 		stateManager.mouseClicked();
 	}
 	
+	public void mousePressed() {
+		stateManager.mousePressed();
+	}
+	
 	public void keyPressed() {
 		stateManager.keyPressed();
 	}

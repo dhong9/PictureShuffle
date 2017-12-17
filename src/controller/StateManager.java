@@ -107,8 +107,8 @@ public class StateManager {
 			String imageName = imageSelectionMenu.getImageName();
 			if (!imageName.isEmpty()) {
 				game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
-				state = imageSelectionMenu.getDestination();
 			}
+			state = imageSelectionMenu.getDestination();
 			break;
 		case Game:
 			game.mouseClicked();
@@ -125,6 +125,12 @@ public class StateManager {
 			break;
 		default:
 			break;
+		}
+	}
+	
+	public void mousePressed() {
+		if (state == State.SettingsMenu) {
+			settingsMenu.mousePressed();
 		}
 	}
 	
