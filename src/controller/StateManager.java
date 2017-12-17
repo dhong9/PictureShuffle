@@ -110,6 +110,10 @@ public class StateManager {
 			}
 			state = imageSelectionMenu.getDestination();
 			break;
+		case SettingsMenu:
+			settingsMenu.mouseClicked();
+			state = settingsMenu.getDestination();
+			break;
 		case Game:
 			game.mouseClicked();
 			state = game.getDestination();
