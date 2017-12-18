@@ -13,11 +13,15 @@ public class SettingsMenu extends Menu {
 	
 	public SettingsMenu(PApplet canvas, float x, float y, float width) {
 		super(canvas, "Settings", x, y, width);
-		this.volume = new Option(canvas, "Volume", x + width / 2, 
-				y + (3 * width / 8), width / 20);
-		this.shuffles = new Option(canvas, "Shuffle Moves", x + width / 2,
-				y + (4 * width / 8), width / 20);
-		this.backBtn = new Button(canvas, "Back", x + width / 2,
+		
+		float centerX = x + width / 2;
+		float optionWidth = width / 20;
+		this.volume = new Option(canvas, "Volume", centerX, 
+				y + (3 * width / 8), optionWidth);
+		this.shuffles = new Option(canvas, "Shuffle Moves", centerX,
+				y + (width / 2), optionWidth);
+		
+		this.backBtn = new Button(canvas, "Back", centerX,
 				y + (3 * width / 4), 3 * width / 8, width / 8);
 		this.destination = State.SettingsMenu;
 	}
@@ -43,6 +47,10 @@ public class SettingsMenu extends Menu {
 	
 	public State getDestination() {
 		return destination;
+	}
+	
+	public float getVolume() {
+		return volume.getValue();
 	}
 
 }

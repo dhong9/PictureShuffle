@@ -1,21 +1,11 @@
 package main;
 
-import static helpers.Helper.randInt;
-
-import java.util.ArrayList;
-
 import controller.StateManager;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
 import processing.core.PApplet;
 
 public class Main extends PApplet {
 	
 	private StateManager stateManager;
-	
-	private Minim minim;
-	private ArrayList<AudioPlayer> songs;
-	private AudioPlayer currentSong;
 	
 	public static void main(String[] args) {
 		PApplet.main("main.Main");
@@ -23,15 +13,11 @@ public class Main extends PApplet {
 	
 	public void setup() {
 		stateManager = new StateManager(this);
-		this.minim = new Minim(this);
-		this.songs = new ArrayList<AudioPlayer>();
-		songs.add(minim.loadFile("res/songs/Memories.mp3"));
-		currentSong = getRandomSong();
-		currentSong.loop();
 	}
 	
 	public void settings() {
-		fullScreen();
+		//fullScreen();
+		size(displayWidth / 2, displayHeight / 2);
 	}
 	
 	public void draw() {
@@ -48,9 +34,5 @@ public class Main extends PApplet {
 	
 	public void keyPressed() {
 		stateManager.keyPressed();
-	}
-	
-	private AudioPlayer getRandomSong() {
-		return songs.get(randInt(0, songs.size()));
 	}
 }

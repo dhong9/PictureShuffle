@@ -46,5 +46,9 @@ public class Option {
 			value++;
 		}
 	}
+	
+	public float getValue() {
+		return value;
+	}
 
 }

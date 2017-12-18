@@ -1,5 +1,11 @@
 package controller;
 
+import static helpers.Helper.randInt;
+
+import java.util.ArrayList;
+
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
 import game.Game;
 import menu.ImageSelectionMenu;
 import menu.MainMenu;
@@ -24,6 +30,10 @@ public class StateManager {
 	private PauseMenu pauseMenu;
 	private WinMenu winMenu;
 	private SettingsMenu settingsMenu;
+	
+	private Minim minim;
+	private ArrayList<AudioPlayer> songs;
+	private AudioPlayer currentSong;
 	
 	private float x, y, width; // Window dimensions
 	
@@ -51,6 +61,12 @@ public class StateManager {
 		this.pauseMenu = new PauseMenu(canvas, x, y, width);
 		this.winMenu = new WinMenu(canvas,x, y, width, "hot-air");
 		this.settingsMenu = new SettingsMenu(canvas, x, y, width);
+		
+		this.minim = new Minim(canvas);
+		this.songs = new ArrayList<AudioPlayer>();
+		songs.add(minim.loadFile("res/songs/Memories.mp3"));
+		currentSong = getRandomSong();
+		currentSong.loop();
 	}
 	
 	/**
@@ -113,6 +129,7 @@ public class StateManager {
 		case SettingsMenu:
 			settingsMenu.mouseClicked();
 			state = settingsMenu.getDestination();
+			currentSong.setGain(PApplet.map(settingsMenu.getVolume(), 0, 100, -80, 0));
 			break;
 		case Game:
 			game.mouseClicked();
@@ -153,6 +170,10 @@ public class StateManager {
 				break;
 			}
 		}
+	}
+	
+	private AudioPlayer getRandomSong() {
+		return songs.get(randInt(0, songs.size()));
 	}
 
 }
