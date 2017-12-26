@@ -1,6 +1,6 @@
 package controller;
 
-import static helpers.Helper.randInt;
+import static helpers.Processing.rand;
 
 import java.util.ArrayList;
 
@@ -122,7 +122,7 @@ public class StateManager {
 			imageSelectionMenu.mouseClicked();
 			String imageName = imageSelectionMenu.getImageName();
 			if (!imageName.isEmpty()) {
-				game = new Game(canvas, x, y, width, imageSelectionMenu.getImageName());
+				game = new Game(canvas, x, y, width, imageName);
 			}
 			state = imageSelectionMenu.getDestination();
 			break;
@@ -173,7 +173,7 @@ public class StateManager {
 	}
 	
 	private AudioPlayer getRandomSong() {
-		return songs.get(randInt(0, songs.size()));
+		return songs.get(rand(canvas, songs.size()));
 	}
 
 }

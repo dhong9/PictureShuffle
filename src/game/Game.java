@@ -1,6 +1,6 @@
 package game;
 
-import static helpers.Helper.randInt;
+import static helpers.Processing.rand;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,7 +44,7 @@ public class Game {
 		ArrayList<int[]> goodTiles = new ArrayList<int[]>();
 		for (int i = 1; i <= scrambles; i++) {
 			goodTiles = board.getGoodTiles();
-			int[] cell = goodTiles.get(randInt(0, goodTiles.size()));
+			int[] cell = goodTiles.get(rand(canvas, goodTiles.size()));
 			board.moveTile(cell[0], cell[1]);
 		}
 	}

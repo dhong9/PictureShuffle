@@ -1,7 +1,6 @@
 package menu;
 
-import static helpers.Helper.randInt;
-import static helpers.Processing.lightenImage;
+import static helpers.Processing.rand;
 
 import java.util.ArrayList;
 
@@ -44,8 +43,7 @@ public class MainMenu extends Menu {
 		images[0] = canvas.loadImage("res/images/hot-air.png");
 		images[1] = canvas.loadImage("res/images/spring-flowers.png");
 		images[2] = canvas.loadImage("res/images/summit.png");
-		PImage image = images[randInt(0, NUMIMAGES)];
-		image = lightenImage(canvas, image, 100);
+		PImage image = images[rand(canvas, NUMIMAGES)];
 		background = new Board(canvas, x, y, width, image, 4);
 		goodTiles = new ArrayList<int[]>();
 		
@@ -63,7 +61,7 @@ public class MainMenu extends Menu {
 		
 		if (canvas.millis() - time >= wait) {
 			goodTiles = background.getGoodTiles();
-			int[] cell = goodTiles.get(randInt(0, goodTiles.size()));
+			int[] cell = goodTiles.get(rand(canvas, goodTiles.size()));
 			background.moveTile(cell[0], cell[1]);
 			time = canvas.millis();
 		}

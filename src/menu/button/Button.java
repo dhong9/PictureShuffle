@@ -33,10 +33,10 @@ public class Button {
 	}
 	
 	public boolean isMouseInside() {
-		return canvas.mouseX > (x - width / 2) &&
+		return (canvas.mouseX > (x - width / 2) &&
 				canvas.mouseX < (x + width / 2) &&
 				canvas.mouseY > (y - height / 2) &&
-				canvas.mouseY < (y + height / 2);
+				canvas.mouseY < (y + height / 2));
 	}
 
 }

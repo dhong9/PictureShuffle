@@ -23,7 +23,7 @@ public class Option {
 		this.leftArrowBtn = new ArrowButton(canvas, x - 2 * size, y + size / 2, 
 				size / 2, size, Direction.Left);
 		this.rightArrowBtn = new ArrowButton(canvas, x + 2 * size, y + size / 2, 
-				size / 2, size,Direction.Right);
+				size / 2, size, Direction.Right);
 	}
 	
 	public void draw() {
